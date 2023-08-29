@@ -1,0 +1,8 @@
+{
+  "goerli": {
+    "SHIFTCAPTURES": {
+      "address": "0x40831936470B508292093872e4b41e93Cd40B60a",
+      "startBlock": 0
+    }
+  }
+}
