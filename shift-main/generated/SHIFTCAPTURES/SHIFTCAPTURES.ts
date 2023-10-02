@@ -173,20 +173,18 @@ export class URI__Params {
 export class SHIFTCAPTURES__collectionsResult {
   value0: string;
   value1: string;
-  value2: string;
-  value3: boolean;
-  value4: string;
-  value5: BigInt;
-  value6: BigInt;
+  value2: boolean;
+  value3: BigInt;
+  value4: BigInt;
+  value5: string;
 
   constructor(
     value0: string,
     value1: string,
-    value2: string,
-    value3: boolean,
-    value4: string,
-    value5: BigInt,
-    value6: BigInt
+    value2: boolean,
+    value3: BigInt,
+    value4: BigInt,
+    value5: string
   ) {
     this.value0 = value0;
     this.value1 = value1;
@@ -194,18 +192,16 @@ export class SHIFTCAPTURES__collectionsResult {
     this.value3 = value3;
     this.value4 = value4;
     this.value5 = value5;
-    this.value6 = value6;
   }
 
   toMap(): TypedMap<string, ethereum.Value> {
     let map = new TypedMap<string, ethereum.Value>();
     map.set("value0", ethereum.Value.fromString(this.value0));
     map.set("value1", ethereum.Value.fromString(this.value1));
-    map.set("value2", ethereum.Value.fromString(this.value2));
-    map.set("value3", ethereum.Value.fromBoolean(this.value3));
-    map.set("value4", ethereum.Value.fromString(this.value4));
-    map.set("value5", ethereum.Value.fromUnsignedBigInt(this.value5));
-    map.set("value6", ethereum.Value.fromUnsignedBigInt(this.value6));
+    map.set("value2", ethereum.Value.fromBoolean(this.value2));
+    map.set("value3", ethereum.Value.fromUnsignedBigInt(this.value3));
+    map.set("value4", ethereum.Value.fromUnsignedBigInt(this.value4));
+    map.set("value5", ethereum.Value.fromString(this.value5));
     return map;
   }
 
@@ -217,24 +213,20 @@ export class SHIFTCAPTURES__collectionsResult {
     return this.value1;
   }
 
-  getDescription(): string {
+  getMintingEnabled(): boolean {
     return this.value2;
   }
 
-  getMintingEnabled(): boolean {
+  getClosingDate(): BigInt {
     return this.value3;
   }
 
-  getImageUrl(): string {
+  getRoyaltyPercentage(): BigInt {
     return this.value4;
   }
 
-  getClosingDate(): BigInt {
+  getPlace(): string {
     return this.value5;
-  }
-
-  getRoyaltyPercentage(): BigInt {
-    return this.value6;
   }
 }
 
@@ -355,18 +347,17 @@ export class SHIFTCAPTURES extends ethereum.SmartContract {
   collections(param0: BigInt): SHIFTCAPTURES__collectionsResult {
     let result = super.call(
       "collections",
-      "collections(uint256):(string,string,string,bool,string,uint256,uint256)",
+      "collections(uint256):(string,string,bool,uint256,uint256,string)",
       [ethereum.Value.fromUnsignedBigInt(param0)]
     );
 
     return new SHIFTCAPTURES__collectionsResult(
       result[0].toString(),
       result[1].toString(),
-      result[2].toString(),
-      result[3].toBoolean(),
-      result[4].toString(),
-      result[5].toBigInt(),
-      result[6].toBigInt()
+      result[2].toBoolean(),
+      result[3].toBigInt(),
+      result[4].toBigInt(),
+      result[5].toString()
     );
   }
 
@@ -375,7 +366,7 @@ export class SHIFTCAPTURES extends ethereum.SmartContract {
   ): ethereum.CallResult<SHIFTCAPTURES__collectionsResult> {
     let result = super.tryCall(
       "collections",
-      "collections(uint256):(string,string,string,bool,string,uint256,uint256)",
+      "collections(uint256):(string,string,bool,uint256,uint256,string)",
       [ethereum.Value.fromUnsignedBigInt(param0)]
     );
     if (result.reverted) {
@@ -386,11 +377,10 @@ export class SHIFTCAPTURES extends ethereum.SmartContract {
       new SHIFTCAPTURES__collectionsResult(
         value[0].toString(),
         value[1].toString(),
-        value[2].toString(),
-        value[3].toBoolean(),
-        value[4].toString(),
-        value[5].toBigInt(),
-        value[6].toBigInt()
+        value[2].toBoolean(),
+        value[3].toBigInt(),
+        value[4].toBigInt(),
+        value[5].toString()
       )
     );
   }
@@ -413,23 +403,21 @@ export class SHIFTCAPTURES extends ethereum.SmartContract {
   createCollection(
     title: string,
     employer: string,
-    description: string,
     mintingEnabled: boolean,
-    imageUrl: string,
     closingDate: BigInt,
-    royaltyPercentage: BigInt
+    royaltyPercentage: BigInt,
+    place: string
   ): BigInt {
     let result = super.call(
       "createCollection",
-      "createCollection(string,string,string,bool,string,uint256,uint256):(uint256)",
+      "createCollection(string,string,bool,uint256,uint256,string):(uint256)",
       [
         ethereum.Value.fromString(title),
         ethereum.Value.fromString(employer),
-        ethereum.Value.fromString(description),
         ethereum.Value.fromBoolean(mintingEnabled),
-        ethereum.Value.fromString(imageUrl),
         ethereum.Value.fromUnsignedBigInt(closingDate),
-        ethereum.Value.fromUnsignedBigInt(royaltyPercentage)
+        ethereum.Value.fromUnsignedBigInt(royaltyPercentage),
+        ethereum.Value.fromString(place)
       ]
     );
 
@@ -439,23 +427,21 @@ export class SHIFTCAPTURES extends ethereum.SmartContract {
   try_createCollection(
     title: string,
     employer: string,
-    description: string,
     mintingEnabled: boolean,
-    imageUrl: string,
     closingDate: BigInt,
-    royaltyPercentage: BigInt
+    royaltyPercentage: BigInt,
+    place: string
   ): ethereum.CallResult<BigInt> {
     let result = super.tryCall(
       "createCollection",
-      "createCollection(string,string,string,bool,string,uint256,uint256):(uint256)",
+      "createCollection(string,string,bool,uint256,uint256,string):(uint256)",
       [
         ethereum.Value.fromString(title),
         ethereum.Value.fromString(employer),
-        ethereum.Value.fromString(description),
         ethereum.Value.fromBoolean(mintingEnabled),
-        ethereum.Value.fromString(imageUrl),
         ethereum.Value.fromUnsignedBigInt(closingDate),
-        ethereum.Value.fromUnsignedBigInt(royaltyPercentage)
+        ethereum.Value.fromUnsignedBigInt(royaltyPercentage),
+        ethereum.Value.fromString(place)
       ]
     );
     if (result.reverted) {
@@ -504,21 +490,6 @@ export class SHIFTCAPTURES extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBigInt());
   }
 
-  developer(): Address {
-    let result = super.call("developer", "developer():(address)", []);
-
-    return result[0].toAddress();
-  }
-
-  try_developer(): ethereum.CallResult<Address> {
-    let result = super.tryCall("developer", "developer():(address)", []);
-    if (result.reverted) {
-      return new ethereum.CallResult();
-    }
-    let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toAddress());
-  }
-
   isApprovedForAll(account: Address, operator: Address): boolean {
     let result = super.call(
       "isApprovedForAll",
@@ -549,6 +520,21 @@ export class SHIFTCAPTURES extends ethereum.SmartContract {
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(value[0].toBoolean());
+  }
+
+  manager(): Address {
+    let result = super.call("manager", "manager():(address)", []);
+
+    return result[0].toAddress();
+  }
+
+  try_manager(): ethereum.CallResult<Address> {
+    let result = super.tryCall("manager", "manager():(address)", []);
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toAddress());
   }
 
   name(): string {
@@ -829,24 +815,20 @@ export class CreateCollectionCall__Inputs {
     return this._call.inputValues[1].value.toString();
   }
 
-  get description(): string {
-    return this._call.inputValues[2].value.toString();
-  }
-
   get mintingEnabled(): boolean {
-    return this._call.inputValues[3].value.toBoolean();
-  }
-
-  get imageUrl(): string {
-    return this._call.inputValues[4].value.toString();
+    return this._call.inputValues[2].value.toBoolean();
   }
 
   get closingDate(): BigInt {
-    return this._call.inputValues[5].value.toBigInt();
+    return this._call.inputValues[3].value.toBigInt();
   }
 
   get royaltyPercentage(): BigInt {
-    return this._call.inputValues[6].value.toBigInt();
+    return this._call.inputValues[4].value.toBigInt();
+  }
+
+  get place(): string {
+    return this._call.inputValues[5].value.toString();
   }
 }
 
@@ -1094,32 +1076,32 @@ export class SetApprovalForAllCall__Outputs {
   }
 }
 
-export class SetDeveloperCall extends ethereum.Call {
-  get inputs(): SetDeveloperCall__Inputs {
-    return new SetDeveloperCall__Inputs(this);
+export class SetManagerCall extends ethereum.Call {
+  get inputs(): SetManagerCall__Inputs {
+    return new SetManagerCall__Inputs(this);
   }
 
-  get outputs(): SetDeveloperCall__Outputs {
-    return new SetDeveloperCall__Outputs(this);
+  get outputs(): SetManagerCall__Outputs {
+    return new SetManagerCall__Outputs(this);
   }
 }
 
-export class SetDeveloperCall__Inputs {
-  _call: SetDeveloperCall;
+export class SetManagerCall__Inputs {
+  _call: SetManagerCall;
 
-  constructor(call: SetDeveloperCall) {
+  constructor(call: SetManagerCall) {
     this._call = call;
   }
 
-  get _developer(): Address {
+  get _manager(): Address {
     return this._call.inputValues[0].value.toAddress();
   }
 }
 
-export class SetDeveloperCall__Outputs {
-  _call: SetDeveloperCall;
+export class SetManagerCall__Outputs {
+  _call: SetManagerCall;
 
-  constructor(call: SetDeveloperCall) {
+  constructor(call: SetManagerCall) {
     this._call = call;
   }
 }
@@ -1154,6 +1136,40 @@ export class SetMintingEnabledCall__Outputs {
   _call: SetMintingEnabledCall;
 
   constructor(call: SetMintingEnabledCall) {
+    this._call = call;
+  }
+}
+
+export class SetTokenURICall extends ethereum.Call {
+  get inputs(): SetTokenURICall__Inputs {
+    return new SetTokenURICall__Inputs(this);
+  }
+
+  get outputs(): SetTokenURICall__Outputs {
+    return new SetTokenURICall__Outputs(this);
+  }
+}
+
+export class SetTokenURICall__Inputs {
+  _call: SetTokenURICall;
+
+  constructor(call: SetTokenURICall) {
+    this._call = call;
+  }
+
+  get tokenId(): BigInt {
+    return this._call.inputValues[0].value.toBigInt();
+  }
+
+  get newURI(): string {
+    return this._call.inputValues[1].value.toString();
+  }
+}
+
+export class SetTokenURICall__Outputs {
+  _call: SetTokenURICall;
+
+  constructor(call: SetTokenURICall) {
     this._call = call;
   }
 }

@@ -6,7 +6,7 @@ dataSources:
     name: SHIFTCAPTURES
     network: goerli
     source:
-      address: "0x40831936470B508292093872e4b41e93Cd40B60a"
+      address: "0xA845f43Fd1B4901a8c34654109eF936FCa50D0Ba"
       abi: SHIFTCAPTURES
       startBlock: 0
     mapping:

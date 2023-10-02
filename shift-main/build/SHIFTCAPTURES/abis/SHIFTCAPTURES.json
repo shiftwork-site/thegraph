@@ -242,19 +242,9 @@
         "type": "string"
       },
       {
-        "internalType": "string",
-        "name": "description",
-        "type": "string"
-      },
-      {
         "internalType": "bool",
         "name": "mintingEnabled",
         "type": "bool"
-      },
-      {
-        "internalType": "string",
-        "name": "imageUrl",
-        "type": "string"
       },
       {
         "internalType": "uint256",
@@ -265,6 +255,11 @@
         "internalType": "uint256",
         "name": "royaltyPercentage",
         "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "place",
+        "type": "string"
       }
     ],
     "stateMutability": "view",
@@ -296,19 +291,9 @@
         "type": "string"
       },
       {
-        "internalType": "string",
-        "name": "description",
-        "type": "string"
-      },
-      {
         "internalType": "bool",
         "name": "mintingEnabled",
         "type": "bool"
-      },
-      {
-        "internalType": "string",
-        "name": "imageUrl",
-        "type": "string"
       },
       {
         "internalType": "uint256",
@@ -319,6 +304,11 @@
         "internalType": "uint256",
         "name": "royaltyPercentage",
         "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "place",
+        "type": "string"
       }
     ],
     "name": "createCollection",
@@ -362,19 +352,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "developer",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "address",
@@ -393,6 +370,19 @@
         "internalType": "bool",
         "name": "",
         "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "manager",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -571,11 +561,11 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_developer",
+        "name": "_manager",
         "type": "address"
       }
     ],
-    "name": "setDeveloper",
+    "name": "setManager",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -594,6 +584,24 @@
       }
     ],
     "name": "setMintingEnabled",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "newURI",
+        "type": "string"
+      }
+    ],
+    "name": "setTokenURI",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

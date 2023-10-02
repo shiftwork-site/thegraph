@@ -193,15 +193,14 @@
     "outputs": [
       { "internalType": "string", "name": "title", "type": "string" },
       { "internalType": "string", "name": "employer", "type": "string" },
-      { "internalType": "string", "name": "description", "type": "string" },
       { "internalType": "bool", "name": "mintingEnabled", "type": "bool" },
-      { "internalType": "string", "name": "imageUrl", "type": "string" },
       { "internalType": "uint256", "name": "closingDate", "type": "uint256" },
       {
         "internalType": "uint256",
         "name": "royaltyPercentage",
         "type": "uint256"
-      }
+      },
+      { "internalType": "string", "name": "place", "type": "string" }
     ],
     "stateMutability": "view",
     "type": "function"
@@ -217,15 +216,14 @@
     "inputs": [
       { "internalType": "string", "name": "title", "type": "string" },
       { "internalType": "string", "name": "employer", "type": "string" },
-      { "internalType": "string", "name": "description", "type": "string" },
       { "internalType": "bool", "name": "mintingEnabled", "type": "bool" },
-      { "internalType": "string", "name": "imageUrl", "type": "string" },
       { "internalType": "uint256", "name": "closingDate", "type": "uint256" },
       {
         "internalType": "uint256",
         "name": "royaltyPercentage",
         "type": "uint256"
-      }
+      },
+      { "internalType": "string", "name": "place", "type": "string" }
     ],
     "name": "createCollection",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
