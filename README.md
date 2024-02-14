@@ -8,9 +8,9 @@ sudo rm shift-rentals/ -r
 ```
 
 ```shell
-sudo rm shift-rentals/ -r
 sudo graph init --studio shift-rentals
 sudo graph codegen
 sudo graph build
+sudo npm i --legacy-peer-deps
 sudo graph deploy --studio shift-rentals
 ```

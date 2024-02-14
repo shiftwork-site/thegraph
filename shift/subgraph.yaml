@@ -1,4 +1,6 @@
-specVersion: 0.0.5
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
 schema:
   file: ./schema.graphql
 dataSources:
@@ -6,9 +8,9 @@ dataSources:
     name: SHIFTCAPTURES
     network: goerli
     source:
-      address: "0xA845f43Fd1B4901a8c34654109eF936FCa50D0Ba"
+      address: "0xE4870B30b4619e105bd56c8190c1D4E80D343Bc2"
       abi: SHIFTCAPTURES
-      startBlock: 0
+      startBlock: 9623848
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
