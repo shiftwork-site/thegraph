@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: SHIFTCAPTURES
-    network: goerli
+    network: mumbai
     source:
-      address: "0xE4870B30b4619e105bd56c8190c1D4E80D343Bc2"
+      address: "0x5957CB28C608B502F18F0A623C7561e60339c023"
       abi: SHIFTCAPTURES
-      startBlock: 9623848
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

@@ -1,8 +1,8 @@
 {
-  "goerli": {
+  "mumbai": {
     "SHIFTCAPTURES": {
-      "address": "0xE4870B30b4619e105bd56c8190c1D4E80D343Bc2",
-      "startBlock": 9623848
+      "address": "0x5957CB28C608B502F18F0A623C7561e60339c023",
+      "startBlock": 0
     }
   }
 }
