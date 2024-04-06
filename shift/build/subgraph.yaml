@@ -1,0 +1,41 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SHIFTCAPTURES
+    network: mumbai
+    source:
+      address: "0x5957CB28C608B502F18F0A623C7561e60339c023"
+      abi: SHIFTCAPTURES
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ApprovalForAll
+        - OwnershipTransferred
+        - TokenMinted
+        - TransferBatch
+        - TransferSingle
+        - URI
+      abis:
+        - name: SHIFTCAPTURES
+          file: SHIFTCAPTURES/abis/SHIFTCAPTURES.json
+      eventHandlers:
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: TokenMinted(uint256,address)
+          handler: handleTokenMinted
+        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
+          handler: handleTransferBatch
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleTransferSingle
+        - event: URI(string,indexed uint256)
+          handler: handleURI
+      file: SHIFTCAPTURES/SHIFTCAPTURES.wasm
