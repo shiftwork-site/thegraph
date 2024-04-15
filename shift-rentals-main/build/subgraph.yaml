@@ -1,0 +1,44 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: SHIFTWORK
+    network: optimism
+    source:
+      address: "0x15aD9a5C2249f9930843c188F1C6e31D2535d63d"
+      abi: SHIFTWORK
+      startBlock: 118423209
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - ContractURIUpdated
+        - NewRental
+        - OwnershipTransferred
+        - Transfer
+        - UpdateUser
+      abis:
+        - name: SHIFTWORK
+          file: SHIFTWORK/abis/SHIFTWORK.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: ContractURIUpdated(string,string)
+          handler: handleContractURIUpdated
+        - event: NewRental(uint256,uint256,address,uint256,string,string,address,uint256)
+          handler: handleNewRental
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: UpdateUser(indexed uint256,indexed address,uint64)
+          handler: handleUpdateUser
+      file: SHIFTWORK/SHIFTWORK.wasm
